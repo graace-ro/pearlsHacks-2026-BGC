@@ -96,7 +96,7 @@ button{
 .location-option:hover,.baked-good-option:hover{
     background-color: #ffcc99;
     transform: translateY(-3px)
-}
+};
 
 .location-choice,.baked-goods-choice {
     margin-top: 20px;
@@ -139,4 +139,45 @@ h2 {
     background-size: contain; /* Shows the whole image */
     background-repeat: no-repeat; /* Prevents tiling of empty space */
     background-position: center; /* Centers the image in the available space */
+.status-header {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #ffb6c1, #ffd1dc);
+}
+
+.status-header > div {
+    background: white;
+    padding: 10px 20px;
+    min-width: 140px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+}
+
+.status-header p {
+    margin: 0;
+    font-weight: 600;
+}
+
+#money-value{
+    color: #2e8b57;
+}
+
+#rent-value {
+    color: #b22222;
+}
+
+#bake-option-value {
+    color: #6a5acd;
+
+}
+
+.location-option::after {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    opacity: 0.6;
+    margin-top: 4px;
 }
