@@ -67,7 +67,7 @@ html, body {
 }
 
 button{
-    padding: 12px 20 px;
+    padding: 12px 20px;
     margin: 10px;
     border: none;
     border-radius:  12px;
@@ -96,7 +96,7 @@ button{
 .location-option:hover,.baked-good-option:hover{
     background-color: #ffcc99;
     transform: translateY(-3px)
-};
+}
 
 .location-choice,.baked-goods-choice {
     margin-top: 20px;
@@ -139,6 +139,15 @@ h2 {
     background-size: contain; /* Shows the whole image */
     background-repeat: no-repeat; /* Prevents tiling of empty space */
     background-position: center; /* Centers the image in the available space */
+}
+
+.game-title{
+    text-align: center;
+    font-size: 42px;
+    color: #6b3e2e;
+    margin-top: 20px;
+    text-shadow: 2px 2px 0px #ffd1dc;
+}
 .status-header {
     display: flex;
     justify-content: center;
@@ -153,6 +162,7 @@ h2 {
     min-width: 140px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 12px;
 
 }
 
@@ -174,10 +184,50 @@ h2 {
 
 }
 
+.location-option{
+    position: relative;
+}
 .location-option::after {
-    display: block;
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    background-color: #4a2c2a;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
     font-size: 12px;
-    font-weight: normal;
-    opacity: 0.6;
-    margin-top: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+
+}
+.location-option::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color:  transparent transparent #4a2c2a transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.location-option:hover::after, .location-option:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+#location3::after{
+    content: "Low rent, lower customer traffic";
+}
+
+#location2::after{
+    content: "Moderate rent, moderate customer traffic";
+}
+
+#location1::after{
+    content: "High rent, high customer traffic";
 }
