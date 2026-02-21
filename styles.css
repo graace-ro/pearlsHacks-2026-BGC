@@ -64,3 +64,11 @@ html, body {
 .YouLose{
     display:none;
 }
+
+.location-choice{
+    display: none;
+}
+
+.baked-goods-choice{
+    display: none;
+}
