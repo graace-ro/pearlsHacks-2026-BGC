@@ -130,3 +130,13 @@ h2 {
     color: red;
     display:none;
 }
+
+.display-case{
+    display: none;
+    background: url(images/BakeryBG.jpg);
+    width: 90%;
+    height: 90%;
+    background-size: contain; /* Shows the whole image */
+    background-repeat: no-repeat; /* Prevents tiling of empty space */
+    background-position: center; /* Centers the image in the available space */
+}
