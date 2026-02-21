@@ -9,18 +9,49 @@
 <body>
     <div class="container">
         <div class = "status-header"></div>
-        <div class="gameplay"></div>
-        <div class="instructions"> 
-            <p id = "starting-text">Congratulations! You'll be starting your own bakery. Your goal is to bake and sell as many delicious treats as possible. 
-            To do this you'll need to manage your ingredients, your money, and sell your baked goods to customers. Your goal is to make $10,000 in profit. Good luck, and have fun baking!</p>
+        <div class="gameplay">
+            <div class="instructions" id = "instructions"> 
+                <p id = "starting-text">Congratulations! You'll be starting your own bakery. Your goal is to bake and sell as many delicious treats as possible. 
+                To do this you'll need to manage your ingredients, your money, and sell your baked goods to customers. Your goal is to make $10,000 in profit. Good luck, and have fun baking!</p>
             
-            <p id = "your-choice-text"> You get to choose where to open your bakery as well as what type of baked goods to make!</p>
+                <p id = "your-choice-text" style="display: none;"> You get to choose where to open your bakery as well as what type of baked goods to make!</p>
             
-            <p id ="baking-text">You have three different options to choose from when baking: Bread, Chocolate Cookies, and Tiramisu!</p>
-            <button type="button" class="proceed">Next</button></div>
-        <div class="YouWin">Congratulations! You've completed the game!</div>
-        <div class= "YouLose">Game Over!</div>
+                <p id ="baking-text" style = "display: none;">You have three different options to choose from when baking: Bread, Chocolate Cookies, and Tiramisu!</p>
+                <button type="button" class="proceed" id = "proceed" onclick="nextInstruction()">Next</button></div>
+                <div class="YouWin">Congratulations! You've completed the game!</div>
+                <div class= "YouLose">Game Over!</div>
+            </div>
+        </div>
+        
 
     </div>
+    <script>
+        let instruction_count = 1;
+        function nextInstruction(){
+            console.log(instruction_count);
+            let i1 = document.getElementById("starting-text");
+            let i2 = document.getElementById("your-choice-text");
+            let i3 = document.getElementById("baking-text");
+            const instructions = [i1, i2, i3];
+            const proceed_button = document.getElementById("proceed");
+            const instruction_dialogue = document.getElementById("instructions");
+
+            if(instruction_count>=instructions.length){
+                instructions.forEach(element => {
+                    element.style.display = 'none';
+                });
+                proceed_button.style.display = 'none';
+                instruction_dialogue.style.display='none';
+                return;
+            }
+            if(instruction_count>0){
+                instructions[instruction_count-1].style.display='none';
+            }
+            instructions[instruction_count].style.display = 'block';
+            instruction_count+=1;
+            console.log(instruction_count);
+
+        }
+    </script>
 </body>
 </html>
