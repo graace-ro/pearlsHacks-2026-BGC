@@ -48,6 +48,7 @@
                 <button type="button" class="baked-good-option" id="bakedGood2" onclick="cookies()">Chocolate Chip Cookies</button>
                 <button type="button" class="baked-good-option" id="bakedGood3" onclick="tiramisu()">Tiramisu</button>
             </div>
+            <div class = "display-case" id="display-case"></div>
         </div>
             
     </div>
@@ -59,6 +60,7 @@
         var good;
         const goods_dialogue = document.getElementById("baked-goods-choice");
         const location_dialogue = document.getElementById("location-choice");
+        const display_case = document.getElementById("display-case");
         const money_display = document.getElementById('money-value');
         money_display.innerHTML+="$" + money;
         const bake_display = document.getElementById("bake-option-value");
@@ -70,6 +72,7 @@
             good = bakedGood(breadPop, 2, 1.50);
             bake_display.innerHTML += "Bread";
             goods_dialogue.style.display='none';
+            display_case.style.display='block';
         }
 
         function cookies(){
@@ -77,7 +80,7 @@
             good = bakedGood(cookiePop, 6, 3);
             bake_display.innerHTML += "Chocolate Chip Cookies";
             goods_dialogue.style.display='none';
-
+            display_case.style.display='block';
         }
 
         function tiramisu(){
@@ -85,6 +88,7 @@
             good = bakedGood(tiraPop, 2, 1.50);
             bake_display.innerHTML += "Tiramisu";
             goods_dialogue.style.display='none';
+            display_case.style.display='block';
         }
 
 
