@@ -3,21 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">    
+    <link rel="stylesheet" href="styles.css">  
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">  
     <title>Home</title>
 </head>
 <body>
     <div class="container">
-        <div class = "status-header"></div>
-        <div class="gameplay"></div>
-        <div class="instructions"> 
-            Congratulations! You've started your own bakery! Your goal is to bake and sell as many delicious treats as possible. 
-            To do this you'll need to manage your ingredients, your money, and sell your baked goods to customers. Your goal is to make $10,000 in profit. Good luck, and have fun baking!
+        <div class = "status-header">
+            <div id="rent">
+                <p id="rent-value">Rent: </p>
+            </div>
+            <div id="money">
+                <p id="money-value">Money: </p>
+            </div>
+            <div id="bake-option">
+                <p id = "bake-option-value">Baked Good: </p>
+            </div>
+        </div>
+        <div class="gameplay">
+            <div class="instructions" id = "instructions"> 
+                <p id = "starting-text">Congratulations! You'll be starting your own bakery. Your goal is to bake and sell as many delicious treats as possible. 
+                To do this you'll need to manage your ingredients, your money, and sell your baked goods to customers. Your goal is to make $10,000 in profit. Good luck, and have fun baking!</p>
             
-            <button type="button" class="proceed">Next</button></div>
-        <div class="YouWin">Congratulations! You've completed the game!</div>
-        <div class= "YouLose">Game Over!</div>
+                <p id = "your-choice-text" style="display: none;"> You get to choose where to open your bakery as well as what type of baked goods to make!</p>
+            
+                <p id ="baking-text" style = "display: none;">You have three different options to choose from when baking: Bread, Chocolate Cookies, and Tiramisu!</p>
+                <button type="button" class="proceed" id = "proceed" onclick="nextInstruction()">Next</button>
+            </div>
+            <div class="YouWin">Congratulations! You've completed the game!</div>
 
+            <div class= "YouLose">Game Over!</div>
+
+            <div class="person"></div>
+
+            <div class="location-choice" id = "location-choice">
+                <h2>Where would you like to open your bakery?</h2>
+                <button type="button" class="location-option" id="location3" onclick="smallTown()">Small Town</button>
+                <button type="button" class="location-option" id="location2" onclick="suburbs()">Suburbs</button>
+                <button type="button" class="location-option" id="location1" onclick="downtown()">Downtown</button>
+            </div>
+            <div class="baked-goods-choice" id = "baked-goods-choice">
+                <h2>What type of baked goods would you like to make?</h2>
+                <button type="button" class="baked-good-option" id="bakedGood1" onclick="bread()">Bread</button>
+                <button type="button" class="baked-good-option" id="bakedGood2" onclick="cookies()">Chocolate Chip Cookies</button>
+                <button type="button" class="baked-good-option" id="bakedGood3" onclick="tiramisu()">Tiramisu</button>
+            </div>
+        </div>
+            
     </div>
+
+    <script>
+        let instruction_count = 1;
+        let rent = 0;
+        let money = 1000;
+        var good;
+        const goods_dialogue = document.getElementById("baked-goods-choice");
+        const location_dialogue = document.getElementById("location-choice");
+        const money_display = document.getElementById('money-value');
+        money_display.innerHTML+="$" + money;
+        const bake_display = document.getElementById("bake-option-value");
+        const rent_display = document.getElementById("rent-value");
+
+
+        function bread(){
+            let breadPop = [8, 10, 12];
+            good = bakedGood(breadPop, 2, 1.50);
+            bake_display.innerHTML += "Bread";
+            goods_dialogue.style.display='none';
+        }
+
+        function cookies(){
+            let cookiePop = [6, 8, 10];
+            good = bakedGood(cookiePop, 6, 3);
+            bake_display.innerHTML += "Chocolate Chip Cookies";
+            goods_dialogue.style.display='none';
+
+        }
+
+        function tiramisu(){
+            let tiraPop = [2, 4, 6];
+            good = bakedGood(tiraPop, 2, 1.50);
+            bake_display.innerHTML += "Tiramisu";
+            goods_dialogue.style.display='none';
+        }
+
+
+        function bakedGood(p, c, e){
+            this.popularity= p;
+            this.cost = c;
+            this.earn = e;
+            this.itemsBaked = function(){
+                let i = Math.random(0, p.length);
+                this.numItems = p[i];
+                money -= numItems*c;
+                money += numItem*e;
+            }
+        }   
+
+        function smallTown(){
+            rent = 200;
+            location_dialogue.style.display = 'none';
+            rent_display.innerHTML += "$" + rent;
+            goods_dialogue.style.display = 'block';
+        }
+        function suburbs(){
+            rent = 600;
+            location_dialogue.style.display = 'none';
+            rent_display.innerHTML += "$" + rent;
+            goods_dialogue.style.display = 'block';
+        }
+        function downtown(){
+            rent = 800;
+            location_dialogue.style.display = 'none';
+            rent_display.innerHTML += "$" + rent;
+            goods_dialogue.style.display = 'block';
+        }
+
+        function nextInstruction(){
+            console.log(instruction_count);
+            let i1 = document.getElementById("starting-text");
+            let i2 = document.getElementById("your-choice-text");
+            let i3 = document.getElementById("baking-text");
+            const instructions = [i1, i2, i3];
+            const proceed_button = document.getElementById("proceed");
+            const instruction_dialogue = document.getElementById("instructions");
+
+            if(instruction_count>=instructions.length){
+                instructions.forEach(element => {
+                    element.style.display = 'none';
+                });
+                proceed_button.style.display = 'none';
+                instruction_dialogue.style.display='none';
+                const location_choice = document.getElementById("location-choice");
+                location_choice.style.display = 'block';
+                return;
+            }
+            if(instruction_count>0){
+                instructions[instruction_count-1].style.display='none';
+            }
+            instructions[instruction_count].style.display = 'block';
+            instruction_count+=1;
+            console.log(instruction_count);
+        }
+    </script>
 </body>
 </html>
