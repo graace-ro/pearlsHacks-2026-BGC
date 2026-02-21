@@ -76,6 +76,37 @@ button{
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
+.proceed{
+    background-color: #ff7f7f;
+    color: white;
+}
+
+.proceed:hover{
+    background-color: #ff4f4f;
+    transform: scale(1.05);
+}
+
+.location-option,.baked-good-option{
+    background-color: #ffe0cc;
+    color: #5a3e36;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.location-option:hover,.baked-good-option:hover{
+    background-color: #ffcc99;
+    transform: translateY(-3px)
+}
+
+.location-choice,.baked-goods-choice {
+    margin-top: 20px;
+    text-align: center;
+    display: none;
+}
+
+h2 {
+    color: #6b3e2e}
+
 #your-choice-text{
     display: none;
 }
@@ -84,18 +115,18 @@ button{
     display: none;
 }
 
+.YouWin, .YouLose {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 20px;
+    display: none;
+}
 .YouWin{
+    color: green;
     display: none;
 }
 
 .YouLose{
+    color: red;
     display:none;
-}
-
-.location-choice{
-    display: none;
-}
-
-.baked-goods-choice{
-    display: none;
 }
