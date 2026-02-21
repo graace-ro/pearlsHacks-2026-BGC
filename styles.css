@@ -231,3 +231,61 @@ h2 {
 #location1::after{
     content: "High rent, high customer traffic";
 }
+
+.game-title{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.title-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.baked-good-option::after {
+    content: "";
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #5a3e36;
+    color: #ffe0cc;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    white-space: pre-line;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    min-width: 160px;
+}
+
+.baked-good-option::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #5a3e36 transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.baked-good-option:hover::after, .baked-good-option:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+#bakedGood1::after{
+    content: "Popularity : 8-12\A Cost: $1.50\A Sale: $2.00";
+}
+#bakedGood2::after{
+    content: "Popularity: 6-10\A Cost: $3.00\A Sale: $6.00";
+}
+#bakedGood3::after{
+    content: "Popularity: 2-6\A Cost: $4 \A Sale: $12.00";
+}
