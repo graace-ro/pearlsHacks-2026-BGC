@@ -73,24 +73,24 @@
 
 
         function bread(){
-            let breadPop = [8, 10, 12];
-            good = bakedGood(breadPop, 2, 1.50);
+            let breadPop = [16, 20, 24];
+            good = bakedGood(breadPop, 1.50, 2);
             bake_display.innerHTML += "Bread";
             goods_dialogue.style.display='none';
             display_case.style.display='block';
         }
 
         function cookies(){
-            let cookiePop = [6, 8, 10];
-            good = bakedGood(cookiePop, 6, 3);
+            let cookiePop = [12, 16, 20];
+            good = bakedGood(cookiePop, 3, 6);
             bake_display.innerHTML += "Chocolate Chip Cookies";
             goods_dialogue.style.display='none';
             display_case.style.display='block';
         }
 
         function tiramisu(){
-            let tiraPop = [2, 4, 6];
-            good = bakedGood(tiraPop, 2, 1.50);
+            let tiraPop = [4, 8, 12];
+            good = bakedGood(tiraPop, 4, 12);
             bake_display.innerHTML += "Tiramisu";
             goods_dialogue.style.display='none';
             display_case.style.display='block';
