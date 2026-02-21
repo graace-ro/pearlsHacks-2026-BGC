@@ -9,7 +9,17 @@
 </head>
 <body>
     <div class="container">
-        <div class = "status-header"></div>
+        <div class = "status-header">
+            <div id="rent">
+                <p id="rent-value">Rent: </p>
+            </div>
+            <div id="money">
+                <p id="money-value">Money: </p>
+            </div>
+            <div id="bake-option">
+                <p id = "bake-option-value">Baked Good: </p>
+            </div>
+        </div>
         <div class="gameplay">
             <div class="instructions" id = "instructions"> 
                 <p id = "starting-text">Congratulations! You'll be starting your own bakery. Your goal is to bake and sell as many delicious treats as possible. 
@@ -25,18 +35,18 @@
             <div class= "YouLose">Game Over!</div>
 
             <div class="person"></div>
-            
+
             <div class="location-choice" id = "location-choice">
                 <h2>Where would you like to open your bakery?</h2>
                 <button type="button" class="location-option" id="location3" onclick="smallTown()">Small Town</button>
                 <button type="button" class="location-option" id="location2" onclick="suburbs()">Suburbs</button>
                 <button type="button" class="location-option" id="location1" onclick="downtown()">Downtown</button>
             </div>
-            <div class="baked-goods-choice">
+            <div class="baked-goods-choice" id = "baked-goods-choice">
                 <h2>What type of baked goods would you like to make?</h2>
-                <button type="button" class="baked-good-option" id="bakedGood1">Bread</button>
-                <button type="button" class="baked-good-option" id="bakedGood2">Chocolate Cookies</button>
-                <button type="button" class="baked-good-option" id="bakedGood3">Tiramisu</button>
+                <button type="button" class="baked-good-option" id="bakedGood1" onclick="bread()">Bread</button>
+                <button type="button" class="baked-good-option" id="bakedGood2" onclick="cookies()">Chocolate Chip Cookies</button>
+                <button type="button" class="baked-good-option" id="bakedGood3" onclick="tiramisu()">Tiramisu</button>
             </div>
         </div>
             
@@ -45,21 +55,70 @@
     <script>
         let instruction_count = 1;
         let rent = 0;
+        let money = 1000;
+        var good;
+        const goods_dialogue = document.getElementById("baked-goods-choice");
+        const location_dialogue = document.getElementById("location-choice");
+        const money_display = document.getElementById('money-value');
+        money_display.innerHTML+="$" + money;
+        const bake_display = document.getElementById("bake-option-value");
+        const rent_display = document.getElementById("rent-value");
+
+
+        function bread(){
+            let breadPop = [8, 10, 12];
+            good = bakedGood(breadPop, 2, 1.50);
+            bake_display.innerHTML += "Bread";
+            goods_dialogue.style.display='none';
+        }
+
+        function cookies(){
+            let cookiePop = [6, 8, 10];
+            good = bakedGood(cookiePop, 6, 3);
+            bake_display.innerHTML += "Chocolate Chip Cookies";
+            goods_dialogue.style.display='none';
+
+        }
+
+        function tiramisu(){
+            let tiraPop = [2, 4, 6];
+            good = bakedGood(tiraPop, 2, 1.50);
+            bake_display.innerHTML += "Tiramisu";
+            goods_dialogue.style.display='none';
+        }
+
+
+        function bakedGood(p, c, e){
+            this.popularity= p;
+            this.cost = c;
+            this.earn = e;
+            this.itemsBaked = function(){
+                let i = Math.random(0, p.length);
+                this.numItems = p[i];
+                money -= numItems*c;
+                money += numItem*e;
+            }
+        }   
+
         function smallTown(){
-            const location_dialogue = document.getElementById("location-choice");
             rent = 200;
             location_dialogue.style.display = 'none';
+            rent_display.innerHTML += "$" + rent;
+            goods_dialogue.style.display = 'block';
         }
         function suburbs(){
-            const location_dialogue = document.getElementById("location-choice");
             rent = 600;
             location_dialogue.style.display = 'none';
+            rent_display.innerHTML += "$" + rent;
+            goods_dialogue.style.display = 'block';
         }
         function downtown(){
-            const location_dialogue = document.getElementById("location-choice");
             rent = 800;
             location_dialogue.style.display = 'none';
+            rent_display.innerHTML += "$" + rent;
+            goods_dialogue.style.display = 'block';
         }
+
         function nextInstruction(){
             console.log(instruction_count);
             let i1 = document.getElementById("starting-text");
