@@ -10,18 +10,33 @@
     <div class="container">
         <div class = "status-header"></div>
         <div class="gameplay">
-            <div class="instructions" id = "instructions"> 
-                <p id = "starting-text">Congratulations! You'll be starting your own bakery. Your goal is to bake and sell as many delicious treats as possible. 
-                To do this you'll need to manage your ingredients, your money, and sell your baked goods to customers. Your goal is to make $10,000 in profit. Good luck, and have fun baking!</p>
-            
-                <p id = "your-choice-text" style="display: none;"> You get to choose where to open your bakery as well as what type of baked goods to make!</p>
-            
-                <p id ="baking-text" style = "display: none;">You have three different options to choose from when baking: Bread, Chocolate Cookies, and Tiramisu!</p>
-                <button type="button" class="proceed" id = "proceed" onclick="nextInstruction()">Next</button></div>
-                <div class="YouWin">Congratulations! You've completed the game!</div>
-                <div class= "YouLose">Game Over!</div>
-            </div>
+                <div class="instructions" id = "instructions"> 
+                    <p id = "starting-text">Congratulations! You'll be starting your own bakery. Your goal is to bake and sell as many delicious treats as possible. 
+                    To do this you'll need to manage your ingredients, your money, and sell your baked goods to customers. Your goal is to make $10,000 in profit. Good luck, and have fun baking!</p>
+                
+                    <p id = "your-choice-text" style="display: none;"> You get to choose where to open your bakery as well as what type of baked goods to make!</p>
+                
+                    <p id ="baking-text" style = "display: none;">You have three different options to choose from when baking: Bread, Chocolate Cookies, and Tiramisu!</p>
+                    <button type="button" class="proceed" id = "proceed" onclick="nextInstruction()">Next</button></div>
+                    <div class="YouWin">Congratulations! You've completed the game!</div>
+                    <div class= "YouLose">Game Over!</div>
+                </div>
+                <div class="person"></div>
+                <div class="location-choice">
+                    <h2>Where would you like to open your bakery?</h2>
+                    <button type="button" class="location-option" id="location1">Downtown</button>
+                    <button type="button" class="location-option" id="location2">Suburbs</button>
+                    <button type="button" class="location-option" id="location3">Small Town</button>
+                </div>
+                <div class="baked-goods-choice">
+                    <h2>What type of baked goods would you like to make?</h2>
+                    <button type="button" class="baked-good-option" id="bakedGood1">Bread</button>
+                    <button type="button" class="baked-good-option" id="bakedGood2">Chocolate Cookies</button>
+                    <button type="button" class="baked-good-option" id="bakedGood3">Tiramisu</button>
+                </div>
+
         </div>
+
         
 
     </div>
