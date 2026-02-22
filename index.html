@@ -28,7 +28,7 @@
         <div class="gameplay">
             <div class="instructions" id = "instructions"> 
                 <p id = "starting-text">Congratulations! You'll be starting your own bakery. Your goal is to bake and sell as many delicious treats as possible. 
-                To do this you'll need to manage your ingredients, your money, and sell your baked goods to customers. Your goal is to make $10,000 in profit. Good luck, and have fun baking!</p>
+                To do this you'll need to manage your ingredients, your money, and sell your baked goods to customers. Your goal is to make $5,000 in profit. Good luck, and have fun baking!</p>
             
                 <p id = "your-choice-text" style="display: none;"> You get to choose where to open your bakery as well as what type of baked goods to make!</p>
             
@@ -126,7 +126,7 @@
     }
         function bread(){
             let breadPop = [90, 110, 130];
-            good =  new bakedGood(breadPop, 1.50, 5.50);
+            good =  new bakedGood(breadPop, 1.50, 5.50, "bread");
             bake_display.innerHTML += "Bread";
             goods_dialogue.style.display='none';
             display_case.style.display='grid';
@@ -137,7 +137,7 @@
 
         function cookies(){
             let cookiePop = [70, 90, 110];
-            good = new bakedGood(cookiePop, 3, 9);
+            good = new bakedGood(cookiePop, 3, 9, "chocolate chip cookies");
             bake_display.innerHTML += "Chocolate Chip Cookies";
             goods_dialogue.style.display='none';
             display_case.style.display='grid';
@@ -149,7 +149,7 @@
 
         function tiramisu(){
             let tiraPop = [45, 60, 75];
-            good = new bakedGood(tiraPop, 4, 14);
+            good = new bakedGood(tiraPop, 4, 14, "tiramisu");
             bake_display.innerHTML += "Tiramisu";
             goods_dialogue.style.display='none';
             display_case.style.display='grid';
@@ -160,15 +160,17 @@
         }
 
 
-        function bakedGood(p, c, e){
+        function bakedGood(p, c, e, n){
             this.popularity= p;
             this.cost = c;
             this.earn = e;
+            this.name = n;
             this.itemsBaked = function(){
                 let i = Math.floor(Math.random() * this.popularity.length);
                 let numItems = this.popularity[i];
                 money -= numItems*this.cost;
                 money += numItems*this.earn;
+                return "You sold " + numItems + " of " + name + "! You earned: " + numItems*e + " and lost " + numItems*cost + ". Your rent also cost you " + rent;
             }
         }   
 
@@ -232,7 +234,7 @@
 
             showTips();
 
-            if(money>=10000){
+            if(money>=5000){
                 document.querySelector(".YouWin").style.display = 'block';
             }
             
