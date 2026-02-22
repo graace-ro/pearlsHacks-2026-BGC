@@ -62,6 +62,11 @@
                 <div class = "sweet-display"></div>
             </div>
             <div class="tips" id ="tips"></div>
+            <div class = "display-case" id="display-case"></div>
+            <div class="tips" id ="tips1F">Spend less than you earn and prepare for emergency costs! - Fidelity</div>
+            <div class="tips" id ="tips1C">When you have a financial goal in mind, it's important to consider the timeline needed to achieve it.</div>
+            <div class="tips" id="tips2F">Estimate your actual expenses- Fidelity</div>
+            <div class="tips" id="tips2C">Maintain full control over your company- Capital One</div>
             
         </div>
         <div class = "status-header">
@@ -74,6 +79,8 @@
         let instruction_count = 1;
         let rent = 0;
         let money = 1000;
+        let month = 1;
+        let selectedGood=null;
         var good;
         const goods_dialogue = document.getElementById("baked-goods-choice");
         const location_dialogue = document.getElementById("location-choice");
@@ -142,6 +149,7 @@
         }
         function suburbs(){
             rent = 600;
+
             location_dialogue.style.display = 'none';
             rent_display.innerHTML += "$" + rent;
             goods_dialogue.style.display = 'block';
@@ -180,6 +188,8 @@
             console.log(instruction_count);
         }
 
+        
+    
     </script>
 </body>
 </html>
