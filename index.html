@@ -64,13 +64,13 @@
             <div class="tips" id ="tips"></div>
             <div class = "display-case" id="display-case"></div>
             <div class="tips" id ="tips1F">Spend less than you earn and prepare for emergency costs! - Fidelity</div>
-            <div class="tips" id ="tips1C">When you have a financial goal in mind, it's important to consider the timeline needed to achieve it.</div>
+            <div class="tips" id ="tips1C">When you have a financial goal in mind, it's important to consider the timeline needed to achieve it - Fidelity.</div>
             <div class="tips" id="tips2F">Estimate your actual expenses- Fidelity</div>
             <div class="tips" id="tips2C">Maintain full control over your company- Capital One</div>
             
         </div>
         <div class = "status-header">
-            <button class="month-button" id="month-button" onclick="gameplayProceed()"></button>
+            <button class="month-button" id="month-button" onclick="gameplayProceed()">Start Month</button>
         </div>
             
     </div>
@@ -92,40 +92,63 @@
         const sweet_displays = document.querySelectorAll(".sweet-display");
 
         function gameplayProceed(){
-            
-        }
+            if (!good){
+                alert("Please select a type of baked good to make!");
+                return;
+            }
 
+            money -= rent;
+
+            good.itemsBaked();
+
+            money_display.innerHTML = "💰 Money: $" + money;
+            
+            bake_display.innerHTML = "🧁 Baked Good: " ;
+
+            month++;
+            good=null;  
+            goods_dialogue.style.display='block';
+
+            if(money>=10000){
+                document.querySelector(".YouWin").style.display = 'block';
+            }
+            if (money<=0){
+                document.querySelector(".YouLose").style.display = 'block'; 
+        }
+    }
         function bread(){
-            let breadPop = [16, 20, 24];
-            good = bakedGood(breadPop, 1.50, 2);
+            let breadPop = [90, 110, 130];
+            good =  new bakedGood(breadPop, 1.50, 5.50);
             bake_display.innerHTML += "Bread";
             goods_dialogue.style.display='none';
             display_case.style.display='grid';
             sweet_displays.forEach(element => {
                 element.classList.add('bread-display');
-            })
+            });
         }
 
         function cookies(){
-            let cookiePop = [12, 16, 20];
-            good = bakedGood(cookiePop, 3, 6);
+            let cookiePop = [70, 90, 110];
+            good = new bakedGood(cookiePop, 3, 9);
             bake_display.innerHTML += "Chocolate Chip Cookies";
             goods_dialogue.style.display='none';
             display_case.style.display='grid';
             sweet_displays.forEach(element => {
                 element.classList.add('cookies-display');
-            })
+            });
+          
         }
 
         function tiramisu(){
-            let tiraPop = [4, 8, 12];
-            good = bakedGood(tiraPop, 4, 12);
+            let tiraPop = [45, 60, 75];
+            good = new bakedGood(tiraPop, 4, 14);
             bake_display.innerHTML += "Tiramisu";
             goods_dialogue.style.display='none';
             display_case.style.display='grid';
             sweet_displays.forEach(element => {
                 element.classList.add('tiramisu-display');
-            })
+            });
+            
         }
 
 
@@ -134,10 +157,10 @@
             this.cost = c;
             this.earn = e;
             this.itemsBaked = function(){
-                let i = Math.random(0, p.length);
-                this.numItems = p[i];
-                money -= numItems*c;
-                money += numItem*e;
+                let i = Math.floor(Math.random() * this.popularity.length);
+                let numItems = this.popularity[i];
+                money -= numItems*this.cost;
+                money += numItems*this.earn;
             }
         }   
 
@@ -148,14 +171,14 @@
             goods_dialogue.style.display = 'block';
         }
         function suburbs(){
-            rent = 600;
+            rent = 400;
 
             location_dialogue.style.display = 'none';
             rent_display.innerHTML += "$" + rent;
             goods_dialogue.style.display = 'block';
         }
         function downtown(){
-            rent = 800;
+            rent = 600;
             location_dialogue.style.display = 'none';
             rent_display.innerHTML += "$" + rent;
             goods_dialogue.style.display = 'block';
@@ -188,8 +211,45 @@
             console.log(instruction_count);
         }
 
-        
-    
+        function startMonth(){
+            money -= rent;
+
+            if(good){
+                good.bakeItems();
+
+            }
+
+            money_display.innerHTML = "💰 Money: $" + money;
+
+
+            showTips();
+
+            if(money>=10000){
+                document.querySelector(".YouWin").style.display = 'block';
+            }
+            
+            if (money<=0){
+                document.querySelector(".YouLose").style.display = 'block';
+            } 
+            month++;
+        }
+
+        function showTips(){
+
+            document.getElementById("tips1F").style.display ="none";
+            document.getElementById("tips1C").style.display ="none";
+            document.getElementById("tips2F").style.display ="none";
+            document.getElementById("tips2C").style.display ="none";
+
+            if (money < 500){
+                document.getElementById("tips1C").style.display ="block";
+                document.getElementById("tips2F").style.display ="block";
+            }
+            else if (money < 2000){
+                document.getElementById("tips1F").style.display ="block";
+                document.getElementById("tips2C").style.display ="block";
+            }
+        }
     </script>
 </body>
 </html>
