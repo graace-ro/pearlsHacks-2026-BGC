@@ -114,14 +114,15 @@
             month++;
             good=null;  
             goods_dialogue.style.display='block';
-            display_case.style.display='none';
+            goods_dialogue.style.zIndex=999;
+            goods_dialogue.style.position='fixed';
 
             if(money>=10000){
                 document.querySelector(".YouWin").style.display = 'block';
             }
             if (money<=0){
                 document.querySelector(".YouLose").style.display = 'block'; 
-        }
+            }
     }
         function bread(){
             let breadPop = [90, 110, 130];
