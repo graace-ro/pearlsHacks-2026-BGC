@@ -401,3 +401,11 @@ h2 {
   margin: 10px 0 16px;
   font-weight: 700;
 }
+
+.alert{
+    display: 'none';
+}
+
+#alert-exit-button{
+    display: 'none'
+}
