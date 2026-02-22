@@ -68,11 +68,9 @@
             <div class="tips" id="tips2F">Estimate your actual expenses- Fidelity</div>
             <div class="tips" id="tips2C">Maintain full control over your company- Capital One</div>
 
-            <div class="randomEvents" id="SethTrimble">Seth Trimble visits your bakery! Profit skyrockets.</div>
-            <div class="randomEvents" id="UNC">UNC Beats Duke increasing local festival foot traffic!</div>
-            <div class="randomEvents" id="Gordon">Gordon Ramsey gives you a great review!</div>
-            <div class="randomEvents" id="Equipment">Equipment breaks down, you spend money on repairs.</div>
-            <div class="randomEvents" id="Flour">Flour shipment is delayed, you lose money.</div>
+            <div class="alert" id="alert">
+                <button id="alert-exit-button" onclick="exitAlert()"></button>
+            </div>
         </div>
         <div class = "status-header">
             <button class="month-button" id="month-button" onclick="gameplayProceed()">Start Month</button>
@@ -95,16 +93,18 @@
         const bake_display = document.getElementById("bake-option-value");
         const rent_display = document.getElementById("rent-value");
         const sweet_displays = document.querySelectorAll(".sweet-display");
+        const alert_system = document.getElementById("alert");
 
         function gameplayProceed(){
             if (!good){
-                alert("Please select a type of baked good to make!");
+                alert_system.innerHTML = "Please select a type of baked good to make!";
                 return;
             }
 
             money -= rent;
 
-            good.itemsBaked();
+            alert_system.innerHTML = good.itemsBaked();
+            alert_system.style.display = 'block';
 
             if (month > 1 && month % 3 ===0) {
                 triggerRandomEvent();
@@ -129,7 +129,14 @@
             if (money<=0){
                 document.querySelector(".YouLose").style.display = 'block'; 
             }
-    }
+        }
+
+        function exitAlert(){
+            alert_system.style.display = 'none';
+            const alert_exit_button = document.getElementById("alert-exit-button");
+            alert_exit_button.style.display = 'none';
+        }
+
         function bread(){
             let breadPop = [90, 110, 130];
             good =  new bakedGood(breadPop, 1.50, 5.50, "bread");
@@ -176,7 +183,7 @@
                 let numItems = this.popularity[i];
                 money -= numItems*this.cost;
                 money += numItems*this.earn;
-                return "You sold " + numItems + " of " + name + "! You earned: " + numItems*e + " and lost " + numItems*cost + ". Your rent also cost you " + rent;
+                return "You sold " + numItems + " of " + this.name + "! You earned: " + numItems*this.earn + " and lost " + numItems*this.cost + ". Your rent also cost you " + rent;
             }
         }   
 
@@ -225,29 +232,6 @@
             instructions[instruction_count].style.display = 'block';
             instruction_count+=1;
             console.log(instruction_count);
-        }
-
-        function startMonth(){
-            money -= rent;
-
-            if(good){
-                good.bakeItems();
-
-            }
-
-            money_display.innerHTML = "💰 Money: $" + money;
-
-
-            showTips();
-
-            if(money>=5000){
-                document.querySelector(".YouWin").style.display = 'block';
-            }
-            
-            if (money<=0){
-                document.querySelector(".YouLose").style.display = 'block';
-            } 
-            month++;
         }
 
         function maybeShowTip() {
