@@ -103,11 +103,17 @@
 
             money_display.innerHTML = "💰 Money: $" + money;
             
+            if (month % 3 === 0) {
+                maybeShowTip();
+            }
+
             bake_display.innerHTML = "🧁 Baked Good: " ;
 
             month++;
             good=null;  
             goods_dialogue.style.display='block';
+            display_case.style.display='none';
+
 
             if(money>=10000){
                 document.querySelector(".YouWin").style.display = 'block';
@@ -234,22 +240,26 @@
             month++;
         }
 
-        function showTips(){
+        function maybeShowTip() {
+            if (Math.random() > 0.35) return;
 
-            document.getElementById("tips1F").style.display ="none";
-            document.getElementById("tips1C").style.display ="none";
-            document.getElementById("tips2F").style.display ="none";
-            document.getElementById("tips2C").style.display ="none";
+            const tipIds = ["tips1F", "tips1C", "tips2F", "tips2C"];
+            
+            tipIds.forEach(id => {
+                document.getElementById(id).style.display = "none";
+            });
 
-            if (money < 500){
-                document.getElementById("tips1C").style.display ="block";
-                document.getElementById("tips2F").style.display ="block";
-            }
-            else if (money < 2000){
-                document.getElementById("tips1F").style.display ="block";
-                document.getElementById("tips2C").style.display ="block";
-            }
+            const randomId = tipIds[Math.floor(Math.random() * tipIds.length)];
+            const tipEl = document.getElementById(randomId);
+            tipEl.style.display = "block";
+
+            setTimeout(() => {
+                tipEl.style.display = "none";
+            }, 4500);
+            
+
         }
+        
     </script>
 </body>
 </html>
