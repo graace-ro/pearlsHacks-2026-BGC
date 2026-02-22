@@ -67,7 +67,6 @@
             <div class="tips" id ="tips1C">When you have a financial goal in mind, it's important to consider the timeline needed to achieve it - Fidelity.</div>
             <div class="tips" id="tips2F">Estimate your actual expenses- Fidelity</div>
             <div class="tips" id="tips2C">Maintain full control over your company- Capital One</div>
-            
         </div>
         <div class = "status-header">
             <button class="month-button" id="month-button" onclick="gameplayProceed()">Start Month</button>
@@ -101,6 +100,9 @@
 
             good.itemsBaked();
 
+            if (month > 1 && month % 3 ===0) {
+                triggerRandomEvent();
+            }
             money_display.innerHTML = "💰 Money: $" + money;
             
             if (month % 3 === 0) {
@@ -113,7 +115,6 @@
             good=null;  
             goods_dialogue.style.display='block';
             display_case.style.display='none';
-
 
             if(money>=10000){
                 document.querySelector(".YouWin").style.display = 'block';
@@ -260,6 +261,22 @@
 
         }
         
+        const randomEvents = [
+            {description: "UNC Beats Duke increasing local festival foot traffic!", moneyChange: 200},
+            {description: "Seth Trimble visits your bakery! Profit skyrockets.", moneyChange: 500},
+            {description: "Equipment breaks down, you spend money on repairs.", moneyChange: -200},
+            {description: "Flour shipment is delayed, you lose money.", moneyChange: -150},
+            {description: "Gordon Ramsey gives you a great review!", moneyChange: 300},
+
+        ]
+
+        function triggerRandomEvent() {
+            const eventIndex = Math.floor(Math.random() * randomEvents.length);
+            const event = randomEvents[eventIndex];
+            money += event.moneyChange;
+
+            alert(`Random Event: ${event.description}\nMoney charge: $${event.moneyChange}`);
+        }
     </script>
 </body>
 </html>

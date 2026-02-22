@@ -363,3 +363,38 @@ h2 {
     background-color: #ff8fa1;
     transform: scale(1.05);
 }
+
+.event-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9998;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-card {
+  width: min(90vw, 460px);
+  background: #fff8f2;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+  color: #4a2c2a;
+}
+
+#event-title {
+  margin: 0 0 10px;
+  color: #6b3e2e;
+}
+
+#event-text {
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+#event-impact {
+  margin: 10px 0 16px;
+  font-weight: 700;
+}
