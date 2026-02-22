@@ -40,9 +40,15 @@
                 <p id ="baking-text" style = "display: none;">You have three different options to choose from when baking: Bread, Chocolate Cookies, and Tiramisu!</p>
                 <button type="button" class="proceed" id = "proceed" onclick="nextInstruction()">Next</button>
             </div>
-            <div class="YouWin">Congratulations! You've completed the game!</div>
+            <div class="YouWin">
+                <p>Congratulations! You've completed the game!</p>
+                <button class="play-again-button" onclick="playAgain()">Play Again?</button>
+            </div>
 
-            <div class= "YouLose">Game Over!</div>
+            <div class= "YouLose">
+                <p>You lost!</p>
+                <button class="play-again-button" onclick="playAgain()">Play Again?</button>
+            </div>
 
             <div class="person"></div>
 
@@ -89,6 +95,8 @@
         let month = 1;
         let selectedGood=null;
         var good;
+        const proceed_button = document.getElementById("proceed");
+        const instruction_dialogue = document.getElementById("instructions");
         const goods_dialogue = document.getElementById("baked-goods-choice");
         const location_dialogue = document.getElementById("location-choice");
         const display_case = document.getElementById("display-case");
@@ -98,8 +106,10 @@
         const rent_display = document.getElementById("rent-value");
         const sweet_displays = document.querySelectorAll(".sweet-display");
         const alert_system = document.getElementById("alert");
+        const month_button = document.getElementById("month-button");
 
         function gameplayProceed(){
+            alert_system.innerHTML = "";
             if (!good){
                 alert_system.innerHTML = "Please select a type of baked good to make!";
                 return;
@@ -127,12 +137,26 @@
             goods_dialogue.style.zIndex=999;
             goods_dialogue.style.position='fixed';
 
-            if(money>=10000){
+            if(money>=5000){
                 document.querySelector(".YouWin").style.display = 'block';
+                goods_dialogue.style.display='none';
+                month_button.style.display='none';
             }
             if (money<=0){
                 document.querySelector(".YouLose").style.display = 'block'; 
+                month_button.style.display='none';
             }
+        }
+
+        function playAgain(){
+            sweet_displays.forEach(element => {
+                element.style.display='none';
+            });
+            month_button.style.display = 'none';
+            display_case.style.display = 'none';
+            instruction_dialogue.style.display = 'block';
+            proceed_button.style.display = 'block';
+            
         }
 
         function exitAlert(){
@@ -146,10 +170,12 @@
             good =  new bakedGood(breadPop, 1.50, 5.50, "bread");
             bake_display.innerHTML += "Bread";
             goods_dialogue.style.display='none';
+            alert_system.style.display = 'none';
             display_case.style.display='grid';
             sweet_displays.forEach(element => {
                 element.classList.add('bread-display');
             });
+            month_button.style.display = 'block';
         }
 
         function cookies(){
@@ -157,10 +183,12 @@
             good = new bakedGood(cookiePop, 3, 9, "chocolate chip cookies");
             bake_display.innerHTML += "Chocolate Chip Cookies";
             goods_dialogue.style.display='none';
+            alert_system.style.display = 'none';
             display_case.style.display='grid';
             sweet_displays.forEach(element => {
                 element.classList.add('cookies-display');
             });
+            month_button.style.display = 'block';
           
         }
 
@@ -170,9 +198,11 @@
             bake_display.innerHTML += "Tiramisu";
             goods_dialogue.style.display='none';
             display_case.style.display='grid';
+            alert_system.style.display = 'none';
             sweet_displays.forEach(element => {
                 element.classList.add('tiramisu-display');
             });
+            month_button.style.display = 'block';
             
         }
 
@@ -212,13 +242,11 @@
         }
 
         function nextInstruction(){
-            console.log(instruction_count);
+            //console.log(instruction_count);
             let i1 = document.getElementById("starting-text");
             let i2 = document.getElementById("your-choice-text");
             let i3 = document.getElementById("baking-text");
             const instructions = [i1, i2, i3];
-            const proceed_button = document.getElementById("proceed");
-            const instruction_dialogue = document.getElementById("instructions");
 
             if(instruction_count>=instructions.length){
                 instructions.forEach(element => {
@@ -271,8 +299,8 @@
             const eventIndex = Math.floor(Math.random() * randomEvents.length);
             const event = randomEvents[eventIndex];
             money += event.moneyChange;
-
-            alert(`Random Event: ${event.description}\nMoney charge: $${event.moneyChange}`);
+            alert_system.innerHTML += `\nRandom Event: ${event.description}\nMoney charge: $${event.moneyChange}`;
+            alert_system.style.display = 'block';
         }
     </script>
 </body>
