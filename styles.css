@@ -345,3 +345,21 @@ h2 {
     max-width: 400px;
     transition: all 0.3s ease;
 }
+
+#month-button {
+    background: #fff8dc;
+    color: #4a2c2a;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+.month-button:hover {
+    background-color: #ff8fa1;
+    transform: scale(1.05);
+}
