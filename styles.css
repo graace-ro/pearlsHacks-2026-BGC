@@ -133,12 +133,53 @@ h2 {
 
 .display-case{
     display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     background: url(images/BakeryBG.jpg);
-    width: 90%;
-    height: 90%;
+    width: 65%;
+    height: 95%;
     background-size: contain; /* Shows the whole image */
     background-repeat: no-repeat; /* Prevents tiling of empty space */
     background-position: center; /* Centers the image in the available space */
+}
+
+.sweet-display{
+    animation: item-bounce 2s infinite ease-in-out alternate;
+}
+
+@keyframes item-bounce{
+    0%{
+        top: 0;
+        transform: translateY(50px);
+    }
+    100%{
+        top: 0;
+        transform: translateY(-50px);
+    }
+}
+
+.cookies-display{
+    background: url(images/Cookies.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 60%;
+}
+
+.bread-display{
+    background: url(images/Bread.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 60%;
+}
+
+.tiramisu-display{
+    background: url(images/Tiramisu.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 60%;
 }
 
 .game-title{

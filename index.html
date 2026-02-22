@@ -53,9 +53,19 @@
                 <button type="button" class="baked-good-option" id="bakedGood2" onclick="cookies()">Chocolate Chip Cookies</button>
                 <button type="button" class="baked-good-option" id="bakedGood3" onclick="tiramisu()">Tiramisu</button>
             </div>
-            <div class = "display-case" id="display-case"></div>
+            <div class = "display-case" id="display-case">
+                <div class = "sweet-display"></div>
+                <div class = "sweet-display"></div>
+                <div class = "sweet-display"></div>
+                <div class = "sweet-display"></div>
+                <div class = "sweet-display"></div>
+                <div class = "sweet-display"></div>
+            </div>
             <div class="tips" id ="tips"></div>
             
+        </div>
+        <div class = "status-header">
+            <button class="month-button" id="month-button" onclick="gameplayProceed()"></button>
         </div>
             
     </div>
@@ -72,14 +82,21 @@
         money_display.innerHTML+="$" + money;
         const bake_display = document.getElementById("bake-option-value");
         const rent_display = document.getElementById("rent-value");
+        const sweet_displays = document.querySelectorAll(".sweet-display");
 
+        function gameplayProceed(){
+            
+        }
 
         function bread(){
             let breadPop = [16, 20, 24];
             good = bakedGood(breadPop, 1.50, 2);
             bake_display.innerHTML += "Bread";
             goods_dialogue.style.display='none';
-            display_case.style.display='block';
+            display_case.style.display='grid';
+            sweet_displays.forEach(element => {
+                element.classList.add('bread-display');
+            })
         }
 
         function cookies(){
@@ -87,7 +104,10 @@
             good = bakedGood(cookiePop, 3, 6);
             bake_display.innerHTML += "Chocolate Chip Cookies";
             goods_dialogue.style.display='none';
-            display_case.style.display='block';
+            display_case.style.display='grid';
+            sweet_displays.forEach(element => {
+                element.classList.add('cookies-display');
+            })
         }
 
         function tiramisu(){
@@ -95,7 +115,10 @@
             good = bakedGood(tiraPop, 4, 12);
             bake_display.innerHTML += "Tiramisu";
             goods_dialogue.style.display='none';
-            display_case.style.display='block';
+            display_case.style.display='grid';
+            sweet_displays.forEach(element => {
+                element.classList.add('tiramisu-display');
+            })
         }
 
 
