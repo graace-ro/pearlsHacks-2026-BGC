@@ -403,9 +403,42 @@ h2 {
 }
 
 .alert{
-    display: 'none';
+    position:absolute;
+    left: 20px;
+    color: #c7303f;
+    padding: 8px 14px;
+    padding-top: 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    min-height: 100px;
+    width: 350px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    z-index: 999;
+    align-items: center;
+    text-align:center;
+
 }
 
 #alert-exit-button{
-    display: 'none'
+    position: absolute;
+    animation: slideIn 0.3s ease;
+    margin-top: 20px;
+    justify-content: space-between;
+    padding-bottom: 15px;
+}
+@keyframes slideIn {
+    from {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
