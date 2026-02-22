@@ -67,7 +67,7 @@ html, body {
 }
 
 button{
-    padding: 12px 20 px;
+    padding: 12px 20px;
     margin: 10px;
     border: none;
     border-radius:  12px;
@@ -129,4 +129,219 @@ h2 {
 .YouLose{
     color: red;
     display:none;
+}
+
+.display-case{
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    background: url(images/BakeryBG.jpg);
+    width: 65%;
+    height: 95%;
+    background-size: contain; /* Shows the whole image */
+    background-repeat: no-repeat; /* Prevents tiling of empty space */
+    background-position: center; /* Centers the image in the available space */
+}
+
+.sweet-display{
+    animation: item-bounce 2s infinite ease-in-out alternate;
+}
+
+@keyframes item-bounce{
+    0%{
+        top: 0;
+        transform: translateY(50px);
+    }
+    100%{
+        top: 0;
+        transform: translateY(-50px);
+    }
+}
+
+.cookies-display{
+    background: url(images/Cookies.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 60%;
+}
+
+.bread-display{
+    background: url(images/Bread.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 60%;
+}
+
+.tiramisu-display{
+    background: url(images/Tiramisu.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 60%;
+}
+
+.game-title{
+    text-align: center;
+    font-size: 42px;
+    color: #6b3e2e;
+    margin-top: 20px;
+    text-shadow: 2px 2px 0px #ffd1dc;
+}
+.status-header {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #ffb6c1, #ffd1dc);
+}
+
+.status-header > div {
+    background: white;
+    padding: 10px 20px;
+    min-width: 140px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 12px;
+
+}
+
+.status-header p {
+    margin: 0;
+    font-weight: 600;
+}
+
+#money-value{
+    color: #2e8b57;
+}
+
+#rent-value {
+    color: #b22222;
+}
+
+#bake-option-value {
+    color: #6a5acd;
+
+}
+
+.location-option{
+    position: relative;
+}
+.location-option::after {
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    background-color: #4a2c2a;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+
+}
+.location-option::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color:  transparent transparent #4a2c2a transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.location-option:hover::after, .location-option:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+#location3::after{
+    content: "Low rent, lower customer traffic";
+}
+
+#location2::after{
+    content: "Moderate rent, moderate customer traffic";
+}
+
+#location1::after{
+    content: "High rent, high customer traffic";
+}
+
+.game-title{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.title-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.baked-good-option::after {
+    content: "";
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #5a3e36;
+    color: #ffe0cc;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    white-space: pre-line;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    min-width: 160px;
+}
+
+.baked-good-option::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #5a3e36 transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.baked-good-option:hover::after, .baked-good-option:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+#bakedGood1::after{
+    content: "Popularity : 8-12\A Cost: $1.50\A Sale: $2.00";
+}
+#bakedGood2::after{
+    content: "Popularity: 6-10\A Cost: $3.00\A Sale: $6.00";
+}
+#bakedGood3::after{
+    content: "Popularity: 2-6\A Cost: $4 \A Sale: $12.00";
+}
+
+.tips{
+    display: none;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #fff8dc;
+    color: #4a2c2a;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+    text-align: center;
+    min-width: 250px;
+    max-width: 400px;
+    transition: all 0.3s ease;
 }
