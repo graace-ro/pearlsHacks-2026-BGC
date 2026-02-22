@@ -118,7 +118,7 @@
             money -= rent;
 
             alert_system.innerHTML = good.itemsBaked();
-            alert_system.style.display = 'block';
+            alert_system.style.display = 'flex';
 
             if (month > 1 && month % 3 ===0) {
                 triggerRandomEvent();
@@ -300,7 +300,7 @@
             const event = randomEvents[eventIndex];
             money += event.moneyChange;
             alert_system.innerHTML += `\nRandom Event: ${event.description}\nMoney charge: $${event.moneyChange}`;
-            alert_system.style.display = 'block';
+            alert_system.style.display = 'flex';
         }
     </script>
 </body>

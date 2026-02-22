@@ -403,7 +403,8 @@ h2 {
   font-weight: 700;
 }
 
-.alert{
+#alert{
+    display:none;
     position:absolute;
     left: 20px;
     color: #c7303f;
@@ -416,7 +417,7 @@ h2 {
     min-height: 100px;
     width: 350px;
 
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     gap: 40px;
