@@ -403,7 +403,6 @@ h2 {
 }
 
 .alert{
-    display:none;
     position:absolute;
     left: 20px;
     color: #c7303f;
@@ -427,7 +426,6 @@ h2 {
 }
 
 #alert-exit-button{
-    display: none;
     position: absolute;
     animation: slideIn 0.3s ease;
     margin-top: 20px;
